@@ -192,6 +192,7 @@ cd lane-sign-app
 Install dependencies:
 
 pip install -r requirements.txt
+
 🎯 Usage
 
 Start backend server:
@@ -209,6 +210,7 @@ python backend/app.py --mode train --data data.yaml --epochs 50
 Run evaluation:
 
 python backend/app.py --mode test --model best.pt
+
 🧾 Evaluation Metrics
 Object Detection
 
