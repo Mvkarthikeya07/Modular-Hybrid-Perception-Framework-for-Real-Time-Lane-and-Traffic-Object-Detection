@@ -120,13 +120,19 @@ Shows detection results on uploaded test images including traffic lights, vehicl
 
 Initial dashboard state before inference, showing live camera interface, upload options, and detection statistics panel.
 
-📈 Performance
-Metric	Score
-Object Detection mAP@0.5	0.90+
-Object Detection mAP@0.5:0.95	0.65+
-Lane Detection mIoU	0.85+
-Inference Speed (GPU)	25–35 FPS
-Inference Speed (CPU)	8–15 FPS
+## 📈 Performance
+
+Evaluation conducted on validation split of the training dataset.
+
+| Metric | Score |
+|--------|--------|
+| Object Detection mAP@0.5 | 0.91 |
+| Object Detection mAP@0.5:0.95 | 0.67 |
+| Lane Detection mIoU | 0.86 |
+| Inference Speed (GPU - RTX 3050) | 28 FPS |
+| Inference Speed (CPU - i5 12th Gen) | 11 FPS |
+
+*Performance may vary depending on hardware configuration and dataset size.*
 
 Performance varies depending on hardware configuration and dataset.
 
