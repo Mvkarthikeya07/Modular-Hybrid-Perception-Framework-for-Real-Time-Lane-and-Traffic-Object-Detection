@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AI Lane + Sign Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <h1>🚗 AI Lane + Traffic Sign Detection</h1>
+      <div class="status-chip" id="status">Idle</div>
+    </header>
+
+    <div class="dashboard">
+
+      <!-- LEFT PANEL -->
+      <div class="card left-panel">
+        <h2>Live Camera</h2>
+
+        <video id="video" autoplay muted playsinline></video>
+
+        <div class="controls">
+          <button id="startBtn" class="primary">Start Camera</button>
+          <button id="stopBtn" disabled>Stop</button>
+          <button id="captureBtn" disabled>Capture</button>
+        </div>
+
+        <div class="interval-box">
+          <label>Interval (ms)</label>
+          <input id="interval" type="number" value="800" min="100" step="50" />
+        </div>
+
+        <div class="upload">
+          <label class="upload-btn">
+            Upload Image
+            <input id="fileInput" type="file" accept="image/*" hidden />
+          </label>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="card right-panel">
+        <h2>Detection Output</h2>
+
+        <div class="result-box">
+          <img id="resultImage" />
+        </div>
+
+        <div class="analytics">
+          <div class="stat">
+            <span class="label">Signs Detected</span>
+            <span id="signCount" class="value">0</span>
+          </div>
+
+          <div class="stat">
+            <span class="label">Processing Time</span>
+            <span id="procTime" class="value">0.00 s</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Layout */
+.app {
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.status-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  background: #334155;
+}
+
+/* Dashboard Grid */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 25px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #38bdf8;
+}
+
+/* Video */
+video {
+  width: 100%;
+  border-radius: 10px;
+  background: #000;
+  margin-bottom: 15px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #334155;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #475569;
+}
+
+button.primary {
+  background: #2563eb;
+}
+
+button.primary:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Interval */
+.interval-box {
+  margin-bottom: 12px;
+}
+
+.interval-box input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 6px;
+}
+
+/* Upload */
+.upload-btn {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #16a34a;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background: #15803d;
+}
+
+/* Result Box */
+.result-box {
+  width: 100%;
+  height: 380px;
+  background: #0f172a;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.result-box img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Analytics */
+.analytics {
+  display: flex;
+  gap: 20px;
+}
+
+.stat {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat .label {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.stat .value {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 6px;
+  color: #38bdf8;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
