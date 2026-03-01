@@ -98,7 +98,7 @@ Interactive web interface
 
 ## Real-Time Lane + Sign Detection  
 
-<img width="1366" height="768" alt="516469249-6bbafed6-1bb8-41bd-bfb4-3088ad686797" src="https://github.com/user-attachments/assets/32b83ee3-2c5b-4750-9081-d23d89f409a5" />
+<img width="1366" height="768" alt="Screenshot (205)" src="https://github.com/user-attachments/assets/148a24b1-b99d-4826-9f7b-ceadd7a9fbcd" />
 
 Demonstrates real-time lane curvature estimation, vehicle offset calculation, and multi-object detection using YOLOv8 integrated with classical lane detection.
 
