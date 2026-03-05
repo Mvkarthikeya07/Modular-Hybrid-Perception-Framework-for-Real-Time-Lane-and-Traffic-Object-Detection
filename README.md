@@ -17,7 +17,7 @@ Modular and extensible system design enabling independent component replacement
 Integrated training, evaluation, and deployment pipeline
 
 Research-ready implementation suitable for academic and production environments
-
+`````
 🏗 System Architecture
 
 The framework follows a modular perception pipeline:
@@ -46,7 +46,7 @@ Fusion and Visualization Module
 Final Annotated Output
 
 This architecture enables independent optimization of each module and future scalability.
-
+`````
 🚀 Key Features
 🛣 Lane Detection (Classical Vision)
 
