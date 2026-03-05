@@ -135,7 +135,7 @@ Evaluation conducted on validation split of the training dataset.
 *Performance may vary depending on hardware configuration and dataset size.*
 
 Performance varies depending on hardware configuration and dataset.
-```bash
+```
 📂 Repository Structure
 lane-sign-app/
 │
