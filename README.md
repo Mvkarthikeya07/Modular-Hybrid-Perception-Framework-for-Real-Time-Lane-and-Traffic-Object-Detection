@@ -64,6 +64,10 @@ Temporal smoothing for stability
 
 Lane curvature and vehicle offset estimation
 
+🎥 Real-Time Live Camera Inference
+
+The system supports real-time inference using a live camera feed, enabling continuous perception of dynamic road environments. Frames captured from the camera are processed on-the-fly to perform lane detection, traffic object recognition, and adaptive path estimation. The results are visualized instantly through the dashboard, demonstrating the system’s capability for real-world deployment in ADAS and autonomous driving scenarios.
+
 🚗 Traffic Object Detection (Deep Learning)
 
 YOLOv8 real-time detector
