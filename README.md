@@ -94,6 +94,31 @@ The system is composed of four fully decoupled modules. Each module can be indep
 
 ---
 
+## Screenshots
+
+### Real-Time Lane + Object Detection
+> Live inference showing lane curvature estimation, vehicle offset calculation, and multi-class YOLOv8 detection running simultaneously.
+
+![Real-Time Lane and Sign Detection](https://github.com/user-attachments/assets/148a24b1-b99d-4826-9f7b-ceadd7a9fbcd)
+
+---
+
+### Detection on Uploaded Images
+> Results across 20 test samples — traffic lights, vehicles, and curved lane tracking under varying lighting conditions.
+
+![Detection Sample 1](https://github.com/user-attachments/assets/93adce2c-0e77-4493-9b9f-6ed4cc6bb327)
+
+![Detection Sample 2](https://github.com/user-attachments/assets/af5496a1-83f6-4fff-b80e-b5b6560f57d4)
+
+---
+
+### Dashboard — Idle State
+> Frontend dashboard on load: live camera interface, image upload panel, and the detection statistics sidebar.
+
+![Dashboard Idle State](https://github.com/user-attachments/assets/4b39a226-2254-44a3-9ae7-475beb38ca99)
+
+---
+
 ## Performance
 
 Benchmarks measured on the validation split of the training dataset.
