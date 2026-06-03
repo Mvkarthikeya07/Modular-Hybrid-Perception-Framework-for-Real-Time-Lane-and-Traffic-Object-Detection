@@ -1,160 +1,138 @@
-🚗 Modular Hybrid Perception Framework for Real-Time Lane and Traffic Object Detection
+<div align="center">
 
-A research-oriented modular hybrid perception framework integrating classical computer vision techniques and deep learning models for accurate and real-time lane and traffic object detection. The system is designed for autonomous driving and Advanced Driver Assistance Systems (ADAS), emphasizing modularity, scalability, and reproducibility.
+<img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/YOLOv8-Ultralytics-00BFFF?style=for-the-badge&logo=opencv&logoColor=white"/>
+<img src="https://img.shields.io/badge/OpenCV-4.8%2B-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white"/>
+<img src="https://img.shields.io/badge/PyTorch-2.1%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"/>
+<img src="https://img.shields.io/badge/Flask-REST%20API-000000?style=for-the-badge&logo=flask&logoColor=white"/>
+<img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge"/>
 
-📌 Research Contributions
+<br/><br/>
 
-This work introduces the following key contributions:
+# Modular Hybrid Perception Framework
+### Real-Time Lane Detection & Traffic Object Recognition for ADAS / Autonomous Driving
 
-Hybrid perception architecture combining classical vision and deep learning
+*Fusing classical computer vision with deep learning — designed for reproducibility, modularity, and real-world deployment.*
 
-Real-time lane detection pipeline using optimized classical CV techniques
+<br/>
 
-State-of-the-art traffic object detection using YOLOv8
+[Overview](#-overview) · [Architecture](#-architecture) · [Performance](#-performance) · [Installation](#-installation) · [Usage](#-usage) · [Dataset](#-dataset) · [API Reference](#-api-reference) · [Roadmap](#-roadmap)
 
-Modular and extensible system design enabling independent component replacement
+</div>
 
-Integrated training, evaluation, and deployment pipeline
+---
 
-Research-ready implementation suitable for academic and production environments
-`````
-🏗 System Architecture
+## Overview
 
-The framework follows a modular perception pipeline:
+This framework is a research-grade, production-ready perception system combining **classical computer vision** and **deep learning** into a unified, modular pipeline. It is built for developers and researchers working on autonomous driving, ADAS, or hybrid perception research who need a clean, extensible foundation.
 
-Input Image / Video
-        │
-        ▼
-Preprocessing Module
-        │
-        ├── Lane Detection Module (Classical CV)
-        │       ├ CLAHE Enhancement
-        │       ├ ROI Masking
-        │       ├ Perspective Transform
-        │       ├ Sliding Window Detection
-        │       └ Polynomial Lane Fitting
-        │
-        └── Object Detection Module (YOLOv8)
-                ├ Feature Extraction
-                ├ Object Classification
-                └ Bounding Box Regression
-        │
-        ▼
-Fusion and Visualization Module
-        │
-        ▼
-Final Annotated Output
+**Why this framework?**
 
-This architecture enables independent optimization of each module and future scalability.
-`````
-🚀 Key Features
-🛣 Lane Detection (Classical Vision)
+Most open-source lane detection systems either rely purely on classical CV (brittle under lighting changes) or on heavy deep networks (hard to interpret and deploy). This project takes a hybrid approach — pairing the speed and interpretability of classical techniques with the robustness of YOLOv8, all wired through a clean REST API and a real-time dashboard.
 
-Contrast Limited Adaptive Histogram Equalization (CLAHE)
+**Key highlights:**
 
-Adaptive Region of Interest (ROI)
+- Classical lane detection (CLAHE → ROI → BEV → Sliding Window → Polynomial Fit) running at **28 FPS on GPU** and **11 FPS on CPU**
+- YOLOv8-based traffic object detection with COCO road-class filtering
+- Flask REST backend with CLI and API training modes
+- Live camera inference with real-time visualization dashboard
+- Achieves **mAP@0.5 of 0.91** and **lane mIoU of 0.86** on validation data
 
-Perspective transform (Bird’s Eye View)
+---
 
-Sliding window lane localization
+## Architecture
 
-Polynomial curve fitting
+The system is composed of four fully decoupled modules. Each module can be independently replaced, upgraded, or benchmarked.
 
-Temporal smoothing for stability
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                     Input Layer                                  │
+│           Live Camera Feed  │  Uploaded Image/Video              │
+└─────────────────────┬────────────────────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────────────────┐
+│                  Preprocessing Module                            │
+│       Frame normalization · Resize · Color space conversion      │
+└───────────────────┬──────────────────────┬───────────────────────┘
+                    │                      │
+          ┌─────────▼──────────┐  ┌────────▼──────────────┐
+          │  Lane Detection    │  │   Object Detection     │
+          │  (Classical CV)    │  │   (YOLOv8 Deep DL)     │
+          │                    │  │                        │
+          │ • CLAHE            │  │ • Backbone feature     │
+          │ • Adaptive ROI     │  │   extraction           │
+          │ • Bird's Eye View  │  │ • Road-class filtering │
+          │ • Sliding Window   │  │ • BBox regression      │
+          │ • Polynomial Fit   │  │ • GPU acceleration     │
+          │ • Temporal Smooth  │  │                        │
+          └─────────┬──────────┘  └────────┬───────────────┘
+                    │                      │
+                    └──────────┬───────────┘
+                               ▼
+          ┌────────────────────────────────────────────┐
+          │        Fusion & Visualization Module        │
+          │  Lane overlay · BBox rendering · Telemetry  │
+          └──────────────────────┬─────────────────────┘
+                                 ▼
+          ┌────────────────────────────────────────────┐
+          │           Real-Time Dashboard              │
+          │  Live feed · Stats panel · Detection log   │
+          └────────────────────────────────────────────┘
+```
 
-Lane curvature and vehicle offset estimation
+### Component Responsibilities
 
-🎥 Real-Time Live Camera Inference
+| Module | Technology | Responsibility |
+|---|---|---|
+| Preprocessing | OpenCV | Normalization, resizing, color conversion |
+| Lane Detection | Classical CV (CLAHE, BEV, Polynomial Fit) | Lane boundary localization, curvature & offset estimation |
+| Object Detection | YOLOv8s (Ultralytics) | Real-time traffic object recognition and bounding box prediction |
+| Fusion & Viz | OpenCV + HTML Canvas | Overlay rendering, telemetry display, output composition |
+| Backend | Flask + REST | Inference serving, training orchestration, API routing |
+| Frontend | Vanilla JS + CSS | Live camera feed, upload interface, stats dashboard |
 
-The system supports real-time inference using a live camera feed, enabling continuous perception of dynamic road environments. Frames captured from the camera are processed on-the-fly to perform lane detection, traffic object recognition, and adaptive path estimation. The results are visualized instantly through the dashboard, demonstrating the system’s capability for real-world deployment in ADAS and autonomous driving scenarios.
+---
 
-🚗 Traffic Object Detection (Deep Learning)
+## Performance
 
-YOLOv8 real-time detector
-
-COCO road-relevant class filtering
-
-GPU acceleration support
-
-Robust detection under varying environmental conditions
-
-🧪 Training and Evaluation Pipeline
-
-CLI and REST API training modes
-
-Automated evaluation metrics
-
-Custom dataset compatibility
-
-Modular training scripts
-
-📊 Real-Time Dashboard
-
-Live inference visualization
-
-Detection statistics
-
-Processing time tracking
-
-Interactive web interface
-
-# 🖼 Screenshot Session
-
-## Real-Time Lane + Sign Detection  
-
-<img width="1366" height="768" alt="Screenshot (205)" src="https://github.com/user-attachments/assets/148a24b1-b99d-4826-9f7b-ceadd7a9fbcd" />
-
-Demonstrates real-time lane curvature estimation, vehicle offset calculation, and multi-object detection using YOLOv8 integrated with classical lane detection.
-
-
-## Detection on Uploaded Images  
-**2026-02-25 (20 Samples Tested)**
-
-<img width="1366" height="768" alt="Screenshot (195)" src="https://github.com/user-attachments/assets/93adce2c-0e77-4493-9b9f-6ed4cc6bb327" />
-
-<img width="1366" height="768" alt="Screenshot (196)" src="https://github.com/user-attachments/assets/af5496a1-83f6-4fff-b80e-b5b6560f57d4" />
-
-Shows detection results on uploaded test images including traffic lights, vehicles, and curved lane tracking under varying lighting conditions.
-
-
-## UI (Idle State)  
-**Frontend Dashboard**
-
-<img width="1366" height="768" alt="Screenshot (193)" src="https://github.com/user-attachments/assets/4b39a226-2254-44a3-9ae7-475beb38ca99" />
-
-Initial dashboard state before inference, showing live camera interface, upload options, and detection statistics panel.
-
-## 📈 Performance
-
-Evaluation conducted on validation split of the training dataset.
+Benchmarks measured on the validation split of the training dataset.
 
 | Metric | Score |
-|--------|--------|
-| Object Detection mAP@0.5 | 0.91 |
-| Object Detection mAP@0.5:0.95 | 0.67 |
-| Lane Detection mIoU | 0.86 |
-| Inference Speed (GPU - RTX 3050) | 28 FPS |
-| Inference Speed (CPU - i5 12th Gen) | 11 FPS |
+|---|---|
+| Object Detection mAP@0.5 | **0.91** |
+| Object Detection mAP@0.5:0.95 | **0.67** |
+| Lane Detection mIoU | **0.86** |
+| Inference Speed — GPU (NVIDIA RTX 3050) | **28 FPS** |
+| Inference Speed — CPU (Intel i5 12th Gen) | **11 FPS** |
 
-*Performance may vary depending on hardware configuration and dataset size.*
+> Results are reported on the validation set. Performance may vary depending on hardware configuration, dataset distribution, and lighting conditions.
 
-Performance varies depending on hardware configuration and dataset.
+---
+
+## Repository Structure
+
 ```
-📂 Repository Structure
-lane-sign-app/
+Modular-Hybrid-Perception-Framework/
 │
 ├── backend/
-│   ├── app.py
-│   ├── config.py
-│   ├── detectors/
-│   ├── models/
-│   ├── training/
-│   └── utils/
+│   ├── app.py                  # Flask server: serve / train / test modes
+│   ├── lanenet_model.py        # LaneNet deep model (optional)
+│   ├── postprocess.py          # Lane post-processing utilities
+│   ├── requirements.txt        # Python dependencies
+│   └── yolov8s.pt              # Pre-trained YOLOv8s weights
 │
 ├── frontend/
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
+│   ├── index.html              # Main dashboard UI
+│   ├── styles.css              # Dashboard styling
+│   └── script.js               # Live feed, upload, and stats logic
+│
+├── models/
+│   └── lanenet.pth             # LaneNet weights (optional deep lane model)
+│
+├── annotations/
+│   ├── instances_train2017.json
+│   └── instances_val2017.json
 │
 ├── docs/
 │   ├── output_highway.png
@@ -162,136 +140,222 @@ lane-sign-app/
 │   ├── output_intersection.png
 │   └── architecture.png
 │
-├── data.yaml
+├── data.yaml                   # Dataset configuration for YOLO training
 ├── requirements.txt
 └── README.md
-````
-📌 Dataset
+```
 
-Due to size limitations, datasets are not included in this repository.
+---
 
-Lane segmentation dataset:
+## Installation
 
-https://www.kaggle.com/datasets/sovitrath/road-lane-instance-segmentation
+**Prerequisites:** Python 3.8+, pip, and optionally an NVIDIA GPU with CUDA.
 
-Expected dataset structure:
+**1. Clone the repository**
 
+```bash
+git clone https://github.com/<your-username>/Modular-Hybrid-Perception-Framework.git
+cd Modular-Hybrid-Perception-Framework
+```
+
+**2. Create a virtual environment (recommended)**
+
+```bash
+python -m venv venv
+source venv/bin/activate        # Linux / macOS
+venv\Scripts\activate           # Windows
+```
+
+**3. Install dependencies**
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+**4. Verify GPU availability (optional)**
+
+```python
+import torch
+print(torch.cuda.is_available())   # True if GPU is ready
+```
+
+---
+
+## Dataset
+
+Due to storage constraints, datasets are not bundled in this repository.
+
+**Lane Segmentation Dataset**
+Download from Kaggle: [Road Lane Instance Segmentation](https://www.kaggle.com/datasets/sovitrath/road-lane-instance-segmentation)
+
+**Expected directory structure after download:**
+
+```
 dataset/
 ├── train/
 │   ├── images/
 │   └── masks/
-├── val/
-│   ├── images/
-│   └── masks/
+└── val/
+    ├── images/
+    └── masks/
+```
 
-Update data.yaml accordingly.
+Update `data.yaml` with the correct paths before training.
 
-🔧 Installation
+---
 
-Clone repository:
+## Usage
 
-git clone https://github.com/<your-username>/lane-sign-app.git
-cd lane-sign-app
+### Start the Inference Server
 
-Install dependencies:
-
-pip install -r requirements.txt
-
-🎯 Usage
-
-Start backend server:
-
+```bash
 python backend/app.py --mode serve
+```
 
-Open browser:
+Then open your browser at `http://localhost:5000`. The dashboard will load with the live camera interface and upload panel.
 
-http://localhost:5000
+### Train the Object Detection Model
 
-Train object detection model:
-
+```bash
 python backend/app.py --mode train --data data.yaml --epochs 50
+```
 
-Run evaluation:
+Training results are saved to `train_results/`. You can monitor live metrics from the dashboard.
 
+### Run Evaluation
+
+```bash
 python backend/app.py --mode test --model best.pt
+```
 
-🧾 Evaluation Metrics
-Object Detection
+Outputs mAP, precision, recall, mIoU, and pixel accuracy to the console and saves a results summary.
 
-Mean Average Precision (mAP@0.5)
+### Environment Variables
 
-mAP@0.5:0.95
+| Variable | Default | Description |
+|---|---|---|
+| `YOLO_DEVICE` | `cpu` | Set to `cuda` to enable GPU inference |
+| `YOLO_MODEL` | `yolov8s.pt` | Path to YOLOv8 model weights |
+| `LANENET_WEIGHTS` | `models/lanenet.pth` | Path to optional LaneNet weights |
 
-Precision
+Example with GPU:
+```bash
+YOLO_DEVICE=cuda python backend/app.py --mode serve
+```
 
-Recall
+---
 
-Lane Detection
+## API Reference
 
-Mean Intersection over Union (mIoU)
+The backend exposes a REST API for integration with external systems.
 
-Pixel Accuracy
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/detect` | Run inference on a base64-encoded image |
+| `GET` | `/stream` | MJPEG live camera stream |
+| `POST` | `/train` | Trigger model training programmatically |
+| `GET` | `/stats` | Retrieve real-time detection statistics |
 
-⚡ System Requirements
+**Example `/detect` request:**
 
-Recommended:
+```python
+import requests, base64, cv2
 
-Python 3.8+
+_, buf = cv2.imencode('.jpg', frame)
+b64 = base64.b64encode(buf).decode()
 
-NVIDIA GPU (optional)
+resp = requests.post('http://localhost:5000/detect',
+                     json={'image': b64})
+print(resp.json())   # { "lanes": [...], "objects": [...], "fps": 28.4 }
+```
 
-8GB+ RAM
+---
 
-Supported Platforms:
+## Detected Road Classes
 
-Windows
+The object detector is filtered to road-relevant COCO classes only, reducing false positives from irrelevant categories.
 
-Linux
+| Class | COCO ID | Color (BGR) |
+|---|---|---|
+| Person | 0 | Orange-Yellow |
+| Bicycle | 1 | Light Blue |
+| Car | 2 | Red |
+| Motorcycle | 3 | Orange |
+| Bus | 5 | Dark Red |
+| Truck | 7 | Darker Red |
+| Traffic Light | 9 | Green |
+| Stop Sign | 11 | Crimson |
+| Fire Hydrant | 10 | Orange |
+| Parking Meter | 12 | Teal |
 
-macOS
+---
 
-🔬 Research Applications
+## Evaluation Metrics
 
-Autonomous driving perception
+**Object Detection**
+- Mean Average Precision at IoU 0.5 (mAP@0.5)
+- Mean Average Precision at IoU 0.5–0.95 (mAP@0.5:0.95)
+- Precision and Recall per class
 
-Advanced Driver Assistance Systems (ADAS)
+**Lane Detection**
+- Mean Intersection over Union (mIoU)
+- Pixel Accuracy
 
-Real-time perception frameworks
+---
 
-Robotics and intelligent transportation
+## System Requirements
 
-Hybrid computer vision research
+| Component | Minimum | Recommended |
+|---|---|---|
+| Python | 3.8 | 3.10+ |
+| RAM | 4 GB | 8 GB+ |
+| GPU | — | NVIDIA GPU with CUDA |
+| OS | Windows / Linux / macOS | Ubuntu 20.04+ |
 
-🔮 Future Work
+---
 
-Multi-camera perception
+## Roadmap
 
-Sensor fusion (LiDAR, Radar)
+Planned extensions for future versions:
 
-Model optimization (TensorRT, ONNX)
+- [ ] Multi-camera surround perception
+- [ ] Sensor fusion with LiDAR and Radar inputs
+- [ ] Model export to TensorRT and ONNX for optimized inference
+- [ ] Object tracking integration (SORT, DeepSORT)
+- [ ] 3D bounding box estimation
+- [ ] Edge deployment optimization for Jetson Nano / Raspberry Pi
+- [ ] Docker containerization for one-command deployment
 
-Object tracking (SORT, Deep SORT)
+---
 
-3D object detection
+## Research Applications
 
-Edge deployment optimization
+This framework is suitable as a starting point or baseline for:
 
-🧑‍💻 Author
+- Autonomous driving perception systems
+- Advanced Driver Assistance Systems (ADAS)
+- Real-time hybrid perception research
+- Robotics and intelligent transportation
+- Academic benchmarking of lane and object detection methods
 
-M V Karthikeya
-B.Tech Computer Science (AI & ML)
+---
+
+## Author
+
+**M V Karthikeya**
+B.Tech — Computer Science (AI & ML)
 SRM Institute of Science and Technology
 
-Research Interests:
+Research interests: Computer Vision · Autonomous Systems · Deep Learning · Perception Systems
 
-Computer Vision
+---
 
-Autonomous Systems
+## License
 
-Deep Learning
+This project is licensed under the [MIT License](LICENSE).
 
-Perception Systems
+---
 
-📜 License
-
-This project is licensed under the MIT License.
+<div align="center">
+  <sub>Built with precision for the autonomous driving research community.</sub>
+</div>
