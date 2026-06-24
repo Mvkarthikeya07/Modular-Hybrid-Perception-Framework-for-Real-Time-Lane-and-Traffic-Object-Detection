@@ -134,7 +134,9 @@ Benchmarks measured on the validation split of the training dataset.
 > Results are reported on the validation set. Performance may vary depending on hardware configuration, dataset distribution, and lighting conditions.
 
 ---
-🇮🇳 **National Innovation Challenge — Tata Technologies InnoVent-27**
+<a id="innovent-27"></a>
+
+## 🇮🇳 National Innovation Challenge — Tata Technologies InnoVent-27
 
 <div align="center">
 
