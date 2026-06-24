@@ -134,22 +134,31 @@ Benchmarks measured on the validation split of the training dataset.
 > Results are reported on the validation set. Performance may vary depending on hardware configuration, dataset distribution, and lighting conditions.
 
 ---
-🇮🇳 National Innovation Challenge — Tata Technologies InnoVent-27
+🇮🇳 **National Innovation Challenge — Tata Technologies InnoVent-27**
+
 <div align="center">
-🚗 INNOVENT-27    AI AT THE EDGE: AUTONOMOUS & ADAS SYSTEMS
+
+![InnoVent-27](https://img.shields.io/badge/🚗_INNOVENT--27-Tata_Technologies-00BFFF?style=for-the-badge)
+![Track](https://img.shields.io/badge/AI_AT_THE_EDGE-Autonomous_%26_ADAS_Systems-22c55e?style=for-the-badge)
+
+![Patent Filed](https://img.shields.io/badge/PATENT_FILED-The_Patents_Act_1970-FF6B35?style=for-the-badge)
+![Score](https://img.shields.io/badge/Minor_Project_Score-99%2F100-FFD700?style=for-the-badge)
+
 </div>
-🏆 Track — AI at the Edge: Autonomous & ADAS Systems
 
-3 Elimination Stages · 671+ Engineering Colleges · 20,000+ Innovators · ₹4.5 Lakh Prize Pool · Job Opportunities at Tata Technologies
-Submitted to InnoVent-27, Tata Technologies' flagship national engineering innovation platform — a multi-stage, industry-judged competition evaluated by Subject Matter Experts from one of India's foremost automotive engineering companies, designed not for demos, but for deployment-ready solutions with real-world industrial impact.
+🏆 **Track — AI at the Edge: Autonomous & ADAS Systems**
 
-Where most submissions stop at a working prototype, InnoVent-27 demanded industrial-grade thinking: the Modular Hybrid Perception Framework (MHPF) was built, validated, and legally protected to address one of autonomous driving's most critical unsolved problems — perception systems that are simultaneously accurate, explainable, and deployable on mass-market hardware.
+*3 Elimination Stages · 671+ Engineering Colleges · 20,000+ Innovators · ₹4.5 Lakh Prize Pool · Job Opportunities at Tata Technologies*
 
-At its core is the Confidence-Driven Adaptive Fusion (CDAF) mechanism — a novel algorithm that dynamically shifts perception authority between classical computer vision and YOLOv8 deep learning in real time, based on live environmental confidence scoring. The result: a system that achieves 91% mAP@0.5 object detection, 86% lane mIoU, and sub-35ms end-to-end latency at 28 FPS on edge GPU — without server-grade compute, without LiDAR, and without the $100,000 sensor stacks that make competitors' solutions commercially unviable.
+Submitted to **InnoVent-27**, Tata Technologies' flagship national engineering innovation platform — a multi-stage, industry-judged competition evaluated by Subject Matter Experts from one of India's foremost automotive engineering companies, designed not for demos, but for **deployment-ready solutions with real-world industrial impact**.
 
-The framework's technical depth was recognized on two independent fronts. Academically, it was evaluated as the Minor Project (21CSP302L) at SRM Institute of Science and Technology under SRM Regulation 2021 — awarded 99/100, the highest possible score in the department, reflecting institutional validation of its rigor, originality, and engineering quality. Legally, it was filed as a formal Indian Patent Application under The Patents Act, 1970 (Application dated 27th March 2026, filed with the Patent Office, Chennai) — covering the CDAF fusion mechanism and the hybrid perception pipeline in their entirety. A patent is not a badge. It is a legal declaration, signed before the Controller of Patents, that this work constitutes a true and first invention — a bar that peer review alone does not clear.
+Where most submissions stop at a working prototype, **InnoVent-27 demanded industrial-grade thinking**: the **Modular Hybrid Perception Framework (MHPF)** was built, validated, and legally protected to address one of autonomous driving's most critical unsolved problems — *perception systems that are simultaneously accurate, explainable, and deployable on mass-market hardware.*
 
-This marks the framework's establishment not as a student project, but as a 99/100-rated, patent-protected, cross-platform perception engine — validated across 45+ real-world driving scenarios, deployable on NVIDIA Jetson Orin and Qualcomm SA8155P automotive SoCs, and positioned on a roadmap to full production deployment by 2028.
+At its core is the **Confidence-Driven Adaptive Fusion (CDAF)** mechanism — a novel algorithm that dynamically shifts perception authority between classical computer vision and YOLOv8 deep learning in real time, based on live environmental confidence scoring. The result: a system that achieves **91% mAP@0.5** object detection, **86% lane mIoU**, and sub-**35ms** end-to-end latency at **28 FPS on edge GPU** — without server-grade compute, without LiDAR, and without the $100,000 sensor stacks that make competitors' solutions commercially unviable.
+
+The framework's technical depth was recognized on two independent fronts. Academically, it was evaluated as the **Minor Project (21CSP302L)** at SRM Institute of Science and Technology under SRM Regulation 2021 — awarded **99/100**, the highest possible score in the department, reflecting institutional validation of its rigor, originality, and engineering quality. Legally, it was filed as a formal **Indian Patent Application** under The Patents Act, 1970 (Application dated 27th March 2026, filed with the Patent Office, Chennai) — covering the CDAF fusion mechanism and the hybrid perception pipeline in their entirety. A patent is not a badge. It is a legal declaration, signed before the Controller of Patents, that this work constitutes a **true and first invention** — a bar that peer review alone does not clear.
+
+This marks the framework's establishment not as a student project, but as a **99/100-rated, patent-protected, cross-platform perception engine** — validated across 45+ real-world driving scenarios, deployable on NVIDIA Jetson Orin and Qualcomm SA8155P automotive SoCs, and positioned on a roadmap to full production deployment by 2028.
 
 📎 Submission Package & Project Artifacts — https://drive.google.com/drive/folders/1L10wc5TR6QGPPDsbnC9uL3MDthMqC-Ap?usp=drive_link
 
