@@ -9,7 +9,7 @@
 
 <br/><br/>
 
-# Modular Hybrid Perception Framework
+# Modular Hybrid Perception Framework for Real Time Lane and Traffic Object Detection
 ### Real-Time Lane Detection & Traffic Object Recognition for ADAS / Autonomous Driving
 
 *Fusing classical computer vision with deep learning — designed for reproducibility, modularity, and real-world deployment.*
